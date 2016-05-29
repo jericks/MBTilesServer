@@ -1,6 +1,6 @@
 MBTiles Server
 --------------
-Server your MBTiles Map on the internet.
+Serve your MBTiles map on the web.
 
 Build
 -----
