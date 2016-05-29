@@ -1,0 +1,83 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.3.5.RELEASE")
+    }
+}
+
+apply plugin: 'groovy'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+jar {
+    baseName = 'mbtileserver'
+    version =  '0.1.0'
+}
+
+repositories {
+    maven {
+        url "http://repo.boundlessgeo.com/main"
+    }
+    maven {
+        url "http://download.osgeo.org/webdav/geotools/"
+    }
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-devtools")
+    compile "org.springframework.boot:spring-boot-starter-web"
+    compile "org.springframework.boot:spring-boot-starter-thymeleaf"
+    compile 'org.codehaus.groovy:groovy-all:2.4.6'
+    compile("org.geoscript:geoscript-groovy:1.7-SNAPSHOT") {
+        exclude module: "gt-shapefile"
+        exclude module: "gt-jdbc-postgis"
+        exclude module: "gt-jdbc-h2"
+        exclude module: "gt-jdbc-mysql"
+        exclude module: "gt-jdbc-spatialite"
+        exclude module: "gt-netcdf"
+        exclude module: "java-vector-tile"
+        exclude module: "gt-charts"
+        exclude module: "gt-brewer"
+        exclude module: "gt-svg"
+        exclude module: "gt-swing"
+        exclude module: "gt-css"
+        exclude module: "gt-geotiff"
+        exclude module: "gt-image"
+        exclude module: "gt-imagemosaic"
+        exclude module: "gt-arcgrid"
+        exclude module: "gt-grassraster"
+        exclude module: "gt-gtopo30"
+        exclude module: "gt-imagepyramid"
+        exclude module: "gt-imageio-ext-gdal"
+        exclude module: "gt-wms"
+        exclude module: "jt-jiffleop"
+        exclude module: "jt-jiffle-language"
+        exclude module: "gt-xsd-wfs"
+        exclude module: "gt-wfs-ng"
+        exclude module: "gt-property"
+        exclude module: "gt-geojson"
+        exclude module: "gt-process"
+        exclude module: "gt-process-feature"
+        exclude module: "gt-process-geometry"
+        exclude module: "gt-process-raster"
+        exclude module: "gt-xsd-kml"
+        exclude module: "gt-ysld"
+        exclude module: "gt-transform"
+        exclude module: "gt-geopkg"
+        exclude module: "gt-grid"
+        exclude module: "gdal"
+        exclude module: "gt-ogr-jni"
+    }
+    testCompile("junit:junit")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.13'
+}

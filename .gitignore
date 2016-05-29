@@ -1,0 +1,10 @@
+.gradle/
+.idea/
+build/
+layer.xml
+countries.mbtiles
+mbtileserver.ipr
+mbtileserver.iws
+tile.png
+.DS_Store
+src/test/resources/countries2.mbtiles
