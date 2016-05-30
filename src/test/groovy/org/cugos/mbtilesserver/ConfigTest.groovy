@@ -1,4 +1,4 @@
-package org.cugos.mbtileserver
+package org.cugos.mbtilesserver
 
 import geoscript.layer.MBTiles
 import org.junit.Test

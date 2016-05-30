@@ -1,7 +1,6 @@
-package org.cugos.mbtileserver
+package org.cugos.mbtilesserver
 
 import geoscript.layer.MBTiles
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.context.embedded.EmbeddedServletContainerInitializedEvent
 import org.springframework.context.ApplicationListener

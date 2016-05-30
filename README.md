@@ -12,13 +12,13 @@ Build
 Run
 ---
 ```bash
-java -jar mbtileserver-0.1.0.jar --file=countries.mbtiles --readOnly=true
+java -jar mbtilesserver-0.1.0.jar --file=countries.mbtiles --readOnly=true
 ```
 
 or if you are building the project:
 
 ```bash
-java -jar build/libs/mbtileserver-0.1.0.jar --file=countries.mbtiles --readOnly=true
+java -jar build/libs/mbtilesserver-0.1.0.jar --file=countries.mbtiles --readOnly=true
 ```
 
 and browse to http://localhost:8080:

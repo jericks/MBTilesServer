@@ -1,4 +1,4 @@
-package org.cugos.mbtileserver
+package org.cugos.mbtilesserver
 
 import org.apache.commons.io.FileUtils
 import org.junit.AfterClass
@@ -20,9 +20,9 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppC
 
 @RunWith(SpringJUnit4ClassRunner)
 @SpringApplicationConfiguration(classes = App)
-@TestPropertySource(locations = "classpath:test.properties")
+@TestPropertySource(locations = "classpath:readWrite.properties")
 @WebAppConfiguration
-class RestTest {
+class RestReadWriteTest {
 
     private MockMvc mockMvc
 

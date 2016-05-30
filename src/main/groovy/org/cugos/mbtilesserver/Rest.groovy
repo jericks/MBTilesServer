@@ -1,4 +1,4 @@
-package org.cugos.mbtileserver
+package org.cugos.mbtilesserver
 
 import geoscript.geom.Bounds
 import geoscript.layer.ImageTile

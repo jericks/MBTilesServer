@@ -12,13 +12,13 @@ apply plugin: 'idea'
 apply plugin: 'spring-boot'
 
 jar {
-    baseName = 'mbtileserver'
+    baseName = 'mbtilesserver'
     version =  '0.1.0'
 }
 
 repositories {
     maven {
-        url "http://repo.boundlessgeo.com/main"
+        url "https://repo.boundlessgeo.com/main"
     }
     maven {
         url "http://download.osgeo.org/webdav/geotools/"
