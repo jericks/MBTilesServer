@@ -2,9 +2,9 @@
 .idea/
 build/
 layer.xml
-countries.mbtiles
+/countries.mbtiles
 mbtileserver.ipr
 mbtileserver.iws
-tile.png
+/tile.png
 .DS_Store
 src/test/resources/countries2.mbtiles
