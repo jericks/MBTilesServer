@@ -76,6 +76,7 @@ dependencies {
     }
     testCompile("junit:junit")
     testCompile("org.springframework.boot:spring-boot-starter-test")
+    testCompile("com.jayway.jsonpath:json-path:0.8.1")
 }
 
 task wrapper(type: Wrapper) {

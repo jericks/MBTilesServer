@@ -73,20 +73,6 @@ class Rest {
         }
     }
 
-    @RequestMapping(value = "tile/{z}/{x}/{y}", method = RequestMethod.PUT)
-    @ResponseBody
-    HttpEntity<byte[]> updateTile(@PathVariable int z, @PathVariable int x, @PathVariable int y, @RequestParam MultipartFile file) throws IOException {
-        if (config.readOnly) {
-            new ResponseEntity<byte[]>(HttpStatus.METHOD_NOT_ALLOWED)
-        } else {
-            ImageTile tile = config.mbtiles.get(z, x, y)
-            tile.data = file.bytes
-            config.mbtiles.put(tile)
-            byte[] bytes = tile.data
-            createHttpEntity(bytes, config.mbtiles.metadata.get("format", "png"))
-        }
-    }
-
     @RequestMapping(value = "tile/{z}/{x}/{y}", method = RequestMethod.DELETE)
     @ResponseBody
     HttpEntity<byte[]> deleteTile(@PathVariable int z, @PathVariable int x, @PathVariable int y) throws IOException {
