@@ -38,7 +38,7 @@ class RestReadOnlyTest {
 
     @AfterClass
     static void tearDown() {
-        File file = new File("/src/test/resources/countries2.mbtiles")
+        File file = new File("src/test/resources/countries2.mbtiles")
         file.delete()
     }
 

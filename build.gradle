@@ -13,7 +13,20 @@ apply plugin: 'spring-boot'
 
 jar {
     baseName = 'mbtilesserver'
-    version =  '0.1.0'
+    version =  '0.2-SNAPSHOT'
+}
+
+sourceSets {
+    e2e {
+        groovy.srcDir    file('src/e2e/groovy')
+        resources.srcDir file('src/e2e/resources')
+    }
+}
+
+task e2e(type: Test) {
+    systemProperty "webdriver.chrome.driver", System.getProperty("webdriver.chrome.driver")
+    testClassesDir = sourceSets.e2e.output.classesDir
+    classpath = sourceSets.e2e.runtimeClasspath
 }
 
 repositories {
@@ -77,6 +90,14 @@ dependencies {
     testCompile("junit:junit")
     testCompile("org.springframework.boot:spring-boot-starter-test")
     testCompile("com.jayway.jsonpath:json-path:0.8.1")
+
+    e2eCompile sourceSets.main.output
+    e2eCompile configurations.testCompile
+    e2eCompile sourceSets.test.output
+    e2eRuntime configurations.testRuntime
+    e2eCompile "org.seleniumhq.selenium:selenium-java:2.53.0"
+    e2eCompile "org.seleniumhq.selenium:selenium-chrome-driver:2.53.0"
+    e2eCompile "org.seleniumhq.selenium:selenium-support:2.53.0"
 }
 
 task wrapper(type: Wrapper) {

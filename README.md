@@ -9,6 +9,18 @@ Build
 ./gradlew build
 ```
 
+Run tests
+--------------------
+```bash
+./gradlew test
+```
+
+Run end to end tests
+--------------------
+```bash
+./gradlew -Dwebdriver.chrome.driver=/Your/Path/To/chromedriver e2e
+```
+
 Run
 ---
 ```bash

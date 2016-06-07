@@ -3,8 +3,9 @@
 build/
 layer.xml
 /countries.mbtiles
-mbtileserver.ipr
-mbtileserver.iws
+MBTilesServer.ipr
+MBTilesServer.iws
+MBTilesServer.iml
 /tile.png
 .DS_Store
 src/test/resources/countries2.mbtiles
