@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/jericks/MBTilesServer.svg?branch=master)](https://travis-ci.org/jericks/MBTilesServer)
+
 MBTiles Server
 --------------
 Serve your MBTiles map on the web.
