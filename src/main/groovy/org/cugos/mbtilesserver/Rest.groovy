@@ -43,7 +43,7 @@ class Rest {
     @RequestMapping("raster/{w}/{h}/{bounds}")
     @ResponseBody
     HttpEntity<byte[]> raster(@PathVariable int w, @PathVariable int h, @PathVariable String bounds) throws IOException {
-        String type = config.mbtiles.metadata.get("format","png")
+        String type = config.mbtiles.metadata.get("format","png") ?: "png"
         Bounds b = Bounds.fromString(bounds)
         b.proj = "EPSG:4326"
         RenderedImage image = config.mbtiles.getRaster(b, w, h).image
@@ -56,7 +56,7 @@ class Rest {
     HttpEntity<byte[]> getTile(@PathVariable int z, @PathVariable int x, @PathVariable int y) throws IOException {
         ImageTile tile = config.mbtiles.get(z,x,y)
         byte[] bytes = tile.data
-        createHttpEntity(bytes, config.mbtiles.metadata.get("format","png"))
+        createHttpEntity(bytes, config.mbtiles.metadata.get("format","png")  ?: "png")
     }
 
     @RequestMapping(value = "tile/{z}/{x}/{y}", method = RequestMethod.POST)
@@ -69,7 +69,7 @@ class Rest {
             tile.data = file.bytes
             config.mbtiles.put(tile)
             byte[] bytes = tile.data
-            createHttpEntity(bytes, config.mbtiles.metadata.get("format", "png"))
+            createHttpEntity(bytes, config.mbtiles.metadata.get("format", "png") ?: "png")
         }
     }
 
@@ -82,7 +82,7 @@ class Rest {
             ImageTile tile = config.mbtiles.get(z, x, y)
             config.mbtiles.delete(tile)
             byte[] bytes = tile.data
-            createHttpEntity(bytes, config.mbtiles.metadata.get("format", "png"))
+            createHttpEntity(bytes, config.mbtiles.metadata.get("format", "png") ?: "png")
         }
     }
 
