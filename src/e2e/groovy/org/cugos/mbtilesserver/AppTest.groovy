@@ -29,13 +29,17 @@ class AppTest {
 
     private WebDriver browser
 
-    private File dir
+    private static File dir = new File("build/screenshots")
 
     @BeforeClass
     static void beforeClass() {
+        // Copy mbtiles file to keep the original unchanged
         File source = new File("src/e2e/resources/countries.mbtiles")
         File destination = new File("src/e2e/resources/countries2.mbtiles")
         FileUtils.copyFile(source, destination)
+        // Prepare screenshots directory
+        FileUtils.deleteDirectory(dir)
+        dir.mkdirs()
     }
 
     @AfterClass
@@ -46,9 +50,6 @@ class AppTest {
 
     @Before
     void before() {
-        dir = new File("build/screenshots")
-        FileUtils.deleteDirectory(dir)
-        dir.mkdirs()
         browser = new ChromeDriver()
     }
 
