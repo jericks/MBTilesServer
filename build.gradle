@@ -55,7 +55,7 @@ dependencies {
     compile "org.springframework.boot:spring-boot-starter-web"
     compile "org.springframework.boot:spring-boot-starter-thymeleaf"
     compile 'org.codehaus.groovy:groovy-all:2.4.6'
-    compile("org.geoscript:geoscript-groovy:1.7.0") {
+    compile("org.geoscript:geoscript-groovy:1.8-SNAPSHOT") {
         exclude module: "gt-shapefile"
         exclude module: "gt-jdbc-postgis"
         exclude module: "gt-jdbc-h2"

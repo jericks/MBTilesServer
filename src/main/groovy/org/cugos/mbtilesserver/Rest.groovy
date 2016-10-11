@@ -1,9 +1,11 @@
 package org.cugos.mbtilesserver
 
 import geoscript.geom.Bounds
+import geoscript.geom.Point
 import geoscript.layer.ImageTile
 import geoscript.layer.io.PyramidWriter
 import geoscript.layer.io.JsonPyramidWriter
+import geoscript.proj.Projection
 import groovy.json.JsonOutput
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpEntity
@@ -47,6 +49,23 @@ class Rest {
         Bounds b = Bounds.fromString(bounds)
         b.proj = "EPSG:4326"
         RenderedImage image = config.mbtiles.getRaster(b, w, h).image
+        byte[] bytes = getBytes(image, type)
+        createHttpEntity(bytes, type)
+    }
+
+    @RequestMapping("raster/{z}/{x}/{y}/{proj}/{w}/{h}")
+    @ResponseBody
+    HttpEntity<byte[]> rasterAroundPoint(
+            @PathVariable long z,
+            @PathVariable double x,
+            @PathVariable double y,
+            @PathVariable String proj,
+            @PathVariable int w,
+            @PathVariable int h
+    ) throws IOException {
+        String type = config.mbtiles.metadata.get("format","png") ?: "png"
+        Point point = Projection.transform(new Point(x,y), new Projection(proj), config.mbtiles.proj)
+        RenderedImage image = config.mbtiles.getRaster(point, z, w, h).image
         byte[] bytes = getBytes(image, type)
         createHttpEntity(bytes, type)
     }

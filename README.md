@@ -32,6 +32,12 @@ java -jar mbtilesserver-0.1.0.jar --file=countries.mbtiles --readOnly=true
 or if you are building the project:
 
 ```bash
+./gradlew bootRun
+```
+
+or
+
+```bash
 java -jar build/libs/mbtilesserver-0.1.0.jar --file=countries.mbtiles --readOnly=true
 ```
 
@@ -76,7 +82,11 @@ curl -o tile_1_0_0.png http://localhost:8080/tile/1/0/0
 
 **Download Raster**
 ```bash
-curl -o us.png http://localhost:8080//raster/400/400/-156.533203,3.688855,-50.712891,56.800878
+curl -o us.png http://localhost:8080/raster/400/400/-156.533203,3.688855,-50.712891,56.800878
+```
+
+```bash
+curl -o us.png http://localhost:8080/raster/4/-122.387/47.581/EPSG:4326/400/400
 ```
 
 **Add/Update a Tile**

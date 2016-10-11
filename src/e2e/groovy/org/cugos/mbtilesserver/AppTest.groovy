@@ -151,6 +151,14 @@ class AppTest {
     }
 
     @Test
+    void rasterAroundPointWebService() {
+        browser.get("http://localhost:8080/")
+        browser.findElement(By.linkText("Raster around Point")).click()
+        assertEquals("http://localhost:8080/raster/4/-122.387/47.581/EPSG:4326/400/400", browser.getCurrentUrl())
+        captureScreenShot("raster_around_point_service")
+    }
+
+    @Test
     void metadataWebService() {
         browser.get("http://localhost:8080/")
         browser.findElement(By.linkText("Metadata")).click()

@@ -63,6 +63,13 @@ class RestReadWriteTest {
     }
 
     @Test
+    void rasterAroundPoint() {
+        MvcResult result = mockMvc.perform(get("/raster/4/-122.387/47.581/EPSG:4326/400/400"))
+                .andExpect(status().isOk()).andReturn()
+        assertTrue result.response.contentAsByteArray.length > 0
+    }
+
+    @Test
     void tile() {
         MvcResult result = mockMvc.perform(get("/tile/0/0/0"))
                 .andExpect(status().isOk()).andReturn()
