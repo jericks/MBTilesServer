@@ -26,7 +26,7 @@ Run end to end tests
 Run
 ---
 ```bash
-java -jar mbtilesserver-0.3.0.jar --file=countries.mbtiles --readOnly=true
+java -jar mbtilesserver-0.4-SNAPSHOT.jar --file=countries.mbtiles --readOnly=true
 ```
 
 or if you are building the project:
@@ -38,7 +38,7 @@ or if you are building the project:
 or
 
 ```bash
-java -jar build/libs/mbtilesserver-0.3.0.jar --file=countries.mbtiles --readOnly=true
+java -jar build/libs/mbtilesserver-0.4-SNAPSHOT.jar --file=countries.mbtiles --readOnly=true
 ```
 
 and browse to http://localhost:8080:
