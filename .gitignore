@@ -6,6 +6,7 @@ layer.xml
 MBTilesServer.ipr
 MBTilesServer.iws
 MBTilesServer.iml
+e2e.sh
 /tile.png
 .DS_Store
 src/test/resources/countries2.mbtiles
