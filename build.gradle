@@ -13,7 +13,7 @@ apply plugin: 'org.springframework.boot'
 
 jar {
     baseName = 'mbtilesserver'
-    version =  '0.4-SNAPSHOT'
+    version =  '0.4.0'
 }
 
 sourceSets {
