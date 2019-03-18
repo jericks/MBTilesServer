@@ -2,14 +2,14 @@ package org.cugos.mbtilesserver
 
 import geoscript.layer.MBTiles
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.boot.context.embedded.EmbeddedServletContainerInitializedEvent
-import org.springframework.context.ApplicationListener
+import org.springframework.boot.web.server.WebServerFactoryCustomizer
+import org.springframework.boot.web.servlet.server.ConfigurableServletWebServerFactory
 import org.springframework.stereotype.Component
 
 import javax.annotation.PostConstruct
 
 @Component
-class Config implements ApplicationListener<EmbeddedServletContainerInitializedEvent> {
+class Config implements WebServerFactoryCustomizer<ConfigurableServletWebServerFactory> {
 
     int port
 
@@ -28,8 +28,9 @@ class Config implements ApplicationListener<EmbeddedServletContainerInitializedE
         mbtiles = new MBTiles(new File(fileName).canonicalFile)
     }
 
-    public void onApplicationEvent(EmbeddedServletContainerInitializedEvent event) {
-        port = event.getEmbeddedServletContainer().getPort()
+    @Override
+    void customize(ConfigurableServletWebServerFactory factory) {
+        port = factory.port
         hostName = InetAddress.localHost.hostName
     }
 }

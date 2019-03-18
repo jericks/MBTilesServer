@@ -13,6 +13,7 @@ import org.openqa.selenium.TakesScreenshot
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.chrome.ChromeDriver
+import org.openqa.selenium.firefox.FirefoxDriver
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.TestPropertySource
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
@@ -46,7 +47,7 @@ class AppTest {
 
     @Before
     void before() {
-        browser = new ChromeDriver()
+        browser = new FirefoxDriver()
     }
 
     @After
