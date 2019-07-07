@@ -25,13 +25,13 @@ class ApiConfig {
     }
 
     private ApiInfo apiInfo() {
-        return new ApiInfoBuilder()
+        new ApiInfoBuilder()
                 .title("MBTiles REST API")
                 .description("MBTilesServer REST API")
                 .version("1.0.0")
                 .license("MIT")
                 .licenseUrl("https://opensource.org/licenses/MIT")
-                .build();
+                .build()
     }
 
 }
