@@ -40,10 +40,10 @@ task e2e(type: Test) {
 
 repositories {
     maven {
-        url "https://repo.boundlessgeo.com/main"
+        url "https://repo.osgeo.org/repository/release"
     }
     maven {
-        url "http://download.osgeo.org/webdav/geotools/"
+        url "https://repo.osgeo.org/repository/snapshot"
     }
     mavenCentral()
 }
