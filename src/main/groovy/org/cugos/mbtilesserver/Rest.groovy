@@ -41,7 +41,7 @@ class Rest {
 
     @ApiIgnore
     @RequestMapping(value = "/", method = RequestMethod.GET, produces = "text/html")
-    public ModelAndView home(Model model) {
+    ModelAndView home(Model model) {
         model.addAttribute("name", config.mbtiles.name)
         model.addAttribute("metadata", config.mbtiles.metadata)
         model.addAttribute("stats", config.mbtiles.tileCounts)
