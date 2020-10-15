@@ -1,6 +1,6 @@
 [![TravisCI](https://travis-ci.org/jericks/MBTilesServer.svg?branch=master)](https://travis-ci.org/jericks/MBTilesServer)
 
-![Github Action](https://github.com/jericks/MBTilesServer/workflows/Build/badge.svg)
+[![Github Action](https://github.com/jericks/MBTilesServer/workflows/Build/badge.svg)](https://github.com/jericks/MBTilesServer/actions)
 
 MBTiles Server
 --------------
