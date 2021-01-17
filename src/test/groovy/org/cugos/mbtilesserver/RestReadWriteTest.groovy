@@ -79,7 +79,7 @@ class RestReadWriteTest {
     @Test
     void createTile() {
        byte[] bytes = getClass().getClassLoader().getResource("tile.png").bytes
-       mockMvc.perform(fileUpload("/tile/6/0/0").file("file", bytes))
+       mockMvc.perform(multipart("/tile/6/0/0").file("file", bytes))
                .andExpect(status().isOk())
                .andExpect(content().bytes(bytes))
     }
@@ -87,7 +87,7 @@ class RestReadWriteTest {
     @Test
     void deleteTile() {
         byte[] bytes = getClass().getClassLoader().getResource("tile.png").bytes
-        mockMvc.perform(fileUpload("/tile/6/0/0").file("file", bytes))
+        mockMvc.perform(multipart("/tile/6/0/0").file("file", bytes))
                 .andExpect(status().isOk())
                 .andExpect(content().bytes(bytes))
         mockMvc.perform(delete("/tile/6/0/0"))
