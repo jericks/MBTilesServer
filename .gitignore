@@ -10,3 +10,4 @@ e2e.sh
 /tile.png
 .DS_Store
 src/test/resources/countries2.mbtiles
+examples
