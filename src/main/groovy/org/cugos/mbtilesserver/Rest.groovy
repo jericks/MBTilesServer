@@ -30,6 +30,8 @@ import springfox.documentation.annotations.ApiIgnore
 
 import javax.imageio.ImageIO
 import javax.servlet.http.HttpServletResponse
+import java.awt.Graphics2D
+import java.awt.image.BufferedImage
 import java.awt.image.RenderedImage
 
 @Api(value = "MBTiles REST API")
@@ -59,7 +61,7 @@ class Rest {
         String type = config.mbtiles.metadata.get("format","png") ?: "png"
         Bounds b = Bounds.fromString(bounds)
         b.proj = "EPSG:4326"
-        RenderedImage image = config.mbtiles.getRaster(b, w, h).image
+        BufferedImage image = config.mbtiles.getRaster(b, w, h).bufferedImage
         byte[] bytes = getBytes(image, type)
         createHttpEntity(bytes, type)
     }
@@ -77,7 +79,7 @@ class Rest {
     ) throws IOException {
         String type = config.mbtiles.metadata.get("format","png") ?: "png"
         Point point = Projection.transform(new Point(x,y), new Projection(proj), config.mbtiles.proj)
-        RenderedImage image = config.mbtiles.getRaster(point, z, w, h).image
+        BufferedImage image = config.mbtiles.getRaster(point, z, w, h).bufferedImage
         byte[] bytes = getBytes(image, type)
         createHttpEntity(bytes, type)
     }
@@ -201,10 +203,26 @@ class Rest {
         new HttpEntity<byte[]>(bytes, headers)
     }
 
-    protected byte[] getBytes(RenderedImage image, String type) {
+    protected byte[] getBytes(BufferedImage image, String type) {
+        if (isJpegAndHasAlpha(image, type)) {
+            image = removeAlpha(image)
+        }
         ByteArrayOutputStream out = new ByteArrayOutputStream()
         ImageIO.write(image, type, out)
         out.close()
         out.toByteArray()
     }
+
+    private boolean isJpegAndHasAlpha(BufferedImage image, String type) {
+        type.equalsIgnoreCase("JPEG") && image.type == BufferedImage.TYPE_INT_ARGB
+    }
+
+    private BufferedImage removeAlpha(BufferedImage image) {
+        BufferedImage img = new BufferedImage(image.width, image.height, BufferedImage.TYPE_INT_RGB)
+        Graphics2D g2d = img.createGraphics()
+        g2d.drawImage(image, 0, 0, null)
+        g2d.dispose()
+        img
+    }
+
 }
