@@ -8,8 +8,8 @@ apply plugin: 'groovy'
 apply plugin: 'io.spring.dependency-management'
 
 group = 'org.cugos'
-version = '0.8.0-SNAPSHOT'
-sourceCompatibility = '1.8'
+version = '0.8.0'
+sourceCompatibility = '11'
 
 jar {
     baseName = 'mbtilesserver'
